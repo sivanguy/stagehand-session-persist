@@ -1,26 +1,30 @@
-import { Stagehand, StagehandConfig } from "@browserbasehq/stagehand";
+import { Stagehand } from "@browserbasehq/stagehand";
 import path from "path";
 import fs from "fs";
 import os from "os";
 
 export interface SessionConfig {
   /**
-   * Directory to store session data. Defaults to ~/.stagehand-sessions
+   * Directory to store session data
+   * @default ~/.stagehand-sessions
    */
   storageDir?: string;
   
   /**
-   * Name of the session. Used to create a unique storage file. Defaults to 'default'
+   * Name of the session (used for the storage file name)
+   * @default 'default'
    */
   sessionName?: string;
   
   /**
-   * Whether to automatically save session on browser close. Defaults to true
+   * Whether to automatically save session on close
+   * @default true
    */
   autoSave?: boolean;
   
   /**
-   * Whether to automatically load session on browser start. Defaults to true
+   * Whether to automatically load session on init
+   * @default true
    */
   autoLoad?: boolean;
 }
@@ -29,9 +33,9 @@ export class StagehandSession {
   private stagehand: Stagehand;
   private storageDir: string;
   private storageFile: string;
-  private config: SessionConfig;
+  private config: Required<SessionConfig>;
 
-  constructor(stagehandConfig: StagehandConfig, sessionConfig: SessionConfig = {}) {
+  constructor(stagehandConfig: ConstructorParameters<typeof Stagehand>[0], sessionConfig: SessionConfig = {}) {
     this.config = {
       storageDir: path.join(os.homedir(), '.stagehand-sessions'),
       sessionName: 'default',
@@ -54,10 +58,8 @@ export class StagehandSession {
       fs.mkdirSync(this.storageDir, { recursive: true });
     }
 
-    // Initialize Stagehand
     await this.stagehand.init();
 
-    // Load session if enabled
     if (this.config.autoLoad) {
       await this.loadSession();
     }
@@ -94,21 +96,14 @@ export class StagehandSession {
   }
 
   /**
-   * Get the underlying Stagehand instance
-   */
-  get instance(): Stagehand {
-    return this.stagehand;
-  }
-
-  /**
-   * Get the page from the Stagehand instance
+   * Get the Stagehand page instance
    */
   get page() {
     return this.stagehand.page;
   }
 
   /**
-   * Get the context from the Stagehand instance
+   * Get the Stagehand context instance
    */
   get context() {
     return this.stagehand.context;
