@@ -1,6 +1,6 @@
-# @browserbasehq/stagehand-session
+# stagehand-session-persist
 
-Session management plugin for Stagehand - persist cookies and state between browser runs.
+Session persistence plugin for Stagehand - maintain cookies and state between browser runs.
 
 ## Features
 
@@ -12,13 +12,13 @@ Session management plugin for Stagehand - persist cookies and state between brow
 ## Installation
 
 ```bash
-npm install @browserbasehq/stagehand-session
+npm install stagehand-session-persist
 ```
 
 ## Usage
 
 ```typescript
-import { StagehandSession } from '@browserbasehq/stagehand-session';
+import { StagehandSession } from 'stagehand-session-persist';
 
 // Create a session-enabled Stagehand instance
 const session = new StagehandSession({
@@ -84,7 +84,7 @@ await session.loadSession();
 ## Example: Maintaining Gmail Login
 
 ```typescript
-import { StagehandSession } from '@browserbasehq/stagehand-session';
+import { StagehandSession } from 'stagehand-session-persist';
 
 async function main() {
   const session = new StagehandSession({

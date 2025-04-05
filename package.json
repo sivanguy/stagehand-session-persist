@@ -1,7 +1,7 @@
 {
-  "name": "@browserbasehq/stagehand-session",
+  "name": "stagehand-session-persist",
   "version": "0.1.0",
-  "description": "Session management plugin for Stagehand - persist cookies and state between runs",
+  "description": "Session persistence plugin for Stagehand - maintain cookies and state between browser runs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -11,21 +11,31 @@
   },
   "keywords": [
     "stagehand",
+    "playwright",
     "session",
     "cookies",
     "persistence",
     "automation",
     "testing"
   ],
-  "author": "BrowserBase",
+  "author": "Guy Sivan",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sivanguy/stagehand-session-persist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sivanguy/stagehand-session-persist/issues"
+  },
+  "homepage": "https://github.com/sivanguy/stagehand-session-persist#readme",
   "peerDependencies": {
     "@browserbasehq/stagehand": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@types/jest": "^29.0.0",
     "typescript": "^5.0.0",
     "jest": "^29.0.0",
-    "@types/jest": "^29.0.0"
+    "ts-jest": "^29.0.0"
   }
 } 
