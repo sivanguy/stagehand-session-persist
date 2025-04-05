@@ -1,4 +1,5 @@
 import { Stagehand } from "@browserbasehq/stagehand";
+import type { Page, BrowserContext } from '@browserbasehq/stagehand';
 import path from "path";
 import fs from "fs";
 import os from "os";
@@ -98,14 +99,14 @@ export class StagehandSession {
   /**
    * Get the Stagehand page instance
    */
-  get page() {
+  get page(): Page {
     return this.stagehand.page;
   }
 
   /**
    * Get the Stagehand context instance
    */
-  get context() {
+  get context(): BrowserContext {
     return this.stagehand.context;
   }
 } 
